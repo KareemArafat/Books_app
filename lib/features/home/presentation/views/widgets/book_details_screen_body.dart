@@ -23,7 +23,9 @@ class BookDetailsScreenBody extends StatelessWidget {
                   SizedBox(height: 20),
                   BookDetailsSection(bookModel: bookModel),
                   SizedBox(height: 40),
-                  SimilarBooksSection(),
+                  SimilarBooksSection(
+                    category: bookModel.volumeInfo!.categories?[0] ?? '',
+                  ),
                 ],
               ),
             ),

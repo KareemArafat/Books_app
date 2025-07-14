@@ -1,5 +1,6 @@
 import 'package:bookly_app/const.dart';
 import 'package:bookly_app/core/utilities/app_router.dart';
+import 'package:bookly_app/core/utilities/cubit_observer.dart';
 import 'package:bookly_app/core/utilities/get_it.dart';
 import 'package:bookly_app/features/home/data/repos/home_implement.dart';
 import 'package:bookly_app/features/home/presentation/manager/all_books_cubit/all_books_cubit.dart';
@@ -10,6 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   setupGetIt();
+  Bloc.observer = CubitObserver();
   runApp(const BooklyApp());
 }
 
@@ -21,10 +23,15 @@ class BooklyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AllBooksCubit(getIt.get<HomeImplement>())..getAllBooks(),
+          create:
+              (context) =>
+                  AllBooksCubit(getIt.get<HomeImplement>())..getAllBooks(),
         ),
         BlocProvider(
-          create: (context) => NewestBooksCubit(getIt.get<HomeImplement>())..getNewestBooks(),
+          create:
+              (context) =>
+                  NewestBooksCubit(getIt.get<HomeImplement>())
+                    ..getNewestBooks(),
         ),
       ],
       child: MaterialApp.router(

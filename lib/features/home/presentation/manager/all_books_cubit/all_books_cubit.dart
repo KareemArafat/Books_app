@@ -9,9 +9,9 @@ class AllBooksCubit extends Cubit<AllBooksState> {
 
   final HomeRepo homeRepo;
 
-  getAllBooks() async {
+  getAllBooks({int index = 0}) async {
     emit(AllBooksCubitLoading());
-    var result = await homeRepo.getAllBooks();
+    var result = await homeRepo.getAllBooks(index: index);
     result.fold(
       (failure) {
         emit(AllBooksCubitFailure(errMess: failure.errMessage));

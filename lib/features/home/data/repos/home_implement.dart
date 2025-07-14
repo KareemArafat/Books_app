@@ -10,10 +10,11 @@ class HomeImplement implements HomeRepo {
 
   HomeImplement(this.api);
   @override
-  Future<Either<Failure, List<BookModel>>> getAllBooks() async {
+  Future<Either<Failure, List<BookModel>>> getAllBooks({int index=0}) async {
     try {
       var data = await api.get(
-        endPoint: 'volumes?Filtering=free-ebooks&q=random',
+        endPoint:
+            'volumes?q=trending&orderBy=relevance&startIndex=${index * 10}',
       );
       List<BookModel> books = [];
       for (var item in data['items']) {
@@ -29,10 +30,13 @@ class HomeImplement implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> getNewestBooks() async {
+  Future<Either<Failure, List<BookModel>>> getNewestBooks({
+    int index = 0,
+  }) async {
     try {
       var data = await api.get(
-        endPoint: 'volumes?Filtering=free&Sorting=newest&q=hot',
+        endPoint:
+            'volumes?Filtering=free&Sorting=newest&q=hot&startIndex=${index * 10}',
       );
       List<BookModel> books = [];
       for (var item in data['items']) {
@@ -48,10 +52,14 @@ class HomeImplement implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> getSimilarBooks({required String category}) async {
+  Future<Either<Failure, List<BookModel>>> getSimilarBooks({
+    required String category,
+    int index = 0,
+  }) async {
     try {
       var data = await api.get(
-        endPoint: 'volumes?Filtering=free&Sorting=relevance&q=subject:$category',
+        endPoint:
+            'volumes?Filtering=free&Sorting=relevance&q=subject:$category&startIndex=${index * 10}',
       );
       List<BookModel> books = [];
       for (var item in data['items']) {
