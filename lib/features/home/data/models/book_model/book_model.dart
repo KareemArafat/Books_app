@@ -1,19 +1,28 @@
+import 'package:hive/hive.dart';
 import 'volume_info.dart';
+part 'book_model.g.dart';
 
-class BookModel {
+@HiveType(typeId: 0)
+class BookModel extends HiveObject {
+  @HiveField(0)
   String? kind;
+  @HiveField(1)
   String? id;
-  String? etag;
-  String? selfLink;
+  @HiveField(2)
   VolumeInfo? volumeInfo;
+  @HiveField(3)
+  bool fav;
 
-  BookModel({this.kind, this.id, this.etag, this.selfLink, this.volumeInfo});
+  BookModel({
+    this.kind,
+    this.id,
+    this.volumeInfo,
+    this.fav = false,
+  });
 
   factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
     kind: json['kind'] as String?,
     id: json['id'] as String?,
-    etag: json['etag'] as String?,
-    selfLink: json['selfLink'] as String?,
     volumeInfo:
         json['volumeInfo'] == null
             ? null
@@ -23,8 +32,6 @@ class BookModel {
   Map<String, dynamic> toJson() => {
     'kind': kind,
     'id': id,
-    'etag': etag,
-    'selfLink': selfLink,
     'volumeInfo': volumeInfo?.toJson(),
   };
 }

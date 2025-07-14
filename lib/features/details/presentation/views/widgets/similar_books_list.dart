@@ -1,6 +1,6 @@
-import 'package:bookly_app/features/home/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
+import 'package:bookly_app/features/details/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_images_item.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/similar_books_loading_list.dart';
+import 'package:bookly_app/features/details/presentation/views/widgets/similar_books_loading_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

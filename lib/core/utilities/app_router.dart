@@ -1,8 +1,9 @@
 import 'package:bookly_app/core/utilities/get_it.dart';
+import 'package:bookly_app/features/details/data/repos/details_repo_imp.dart';
+import 'package:bookly_app/features/details/presentation/manager/fav_books_cubit.dart/fav_books_cubit.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
-import 'package:bookly_app/features/home/data/repos/home_implement.dart';
-import 'package:bookly_app/features/home/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
-import 'package:bookly_app/features/home/presentation/views/book_details_screen.dart';
+import 'package:bookly_app/features/details/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
+import 'package:bookly_app/features/details/presentation/views/book_details_screen.dart';
 import 'package:bookly_app/features/home/presentation/views/home_screen.dart';
 import 'package:bookly_app/features/search/manger/cubit/search_cubit.dart';
 import 'package:bookly_app/features/search/presentation/data/repos/search_implement.dart';
@@ -22,9 +23,18 @@ abstract class AppRouter {
       GoRoute(
         path: '/bookDetailsScreen',
         builder:
-            (context, state) => BlocProvider(
-              create:
-                  (context) => SimilarBooksCubit(getIt.get<HomeImplement>()),
+            (context, state) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create:
+                      (context) =>
+                          SimilarBooksCubit(getIt.get<DetailsRepoImp>()),
+                ),
+                BlocProvider(
+                  create:
+                      (context) => FavBooksCubit(getIt.get<DetailsRepoImp>()),
+                ),
+              ],
               child: BookDetailsScreen(bookModel: state.extra as BookModel),
             ),
       ),

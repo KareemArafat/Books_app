@@ -2,17 +2,22 @@ import 'package:bookly_app/const.dart';
 import 'package:bookly_app/core/utilities/app_router.dart';
 import 'package:bookly_app/core/utilities/cubit_observer.dart';
 import 'package:bookly_app/core/utilities/get_it.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/data/repos/home_implement.dart';
 import 'package:bookly_app/features/home/presentation/manager/all_books_cubit/all_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/manager/newest_books_cubit/newest_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async {
+  runApp(const BooklyApp());
   setupGetIt();
   Bloc.observer = CubitObserver();
-  runApp(const BooklyApp());
+  await Hive.initFlutter();
+  Hive.registerAdapter(BookModelAdapter());
+  await Hive.openBox<BookModel>(kFavBooks);
 }
 
 class BooklyApp extends StatelessWidget {

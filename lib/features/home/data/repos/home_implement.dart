@@ -10,7 +10,7 @@ class HomeImplement implements HomeRepo {
 
   HomeImplement(this.api);
   @override
-  Future<Either<Failure, List<BookModel>>> getAllBooks({int index=0}) async {
+  Future<Either<Failure, List<BookModel>>> getAllBooks({int index = 0}) async {
     try {
       var data = await api.get(
         endPoint:
@@ -37,29 +37,6 @@ class HomeImplement implements HomeRepo {
       var data = await api.get(
         endPoint:
             'volumes?Filtering=free&Sorting=newest&q=hot&startIndex=${index * 10}',
-      );
-      List<BookModel> books = [];
-      for (var item in data['items']) {
-        books.add(BookModel.fromJson(item));
-      }
-      return right(books);
-    } catch (e) {
-      if (e is DioException) {
-        return left(ServerFailure.from(e));
-      }
-      return left(ServerFailure(e.toString()));
-    }
-  }
-
-  @override
-  Future<Either<Failure, List<BookModel>>> getSimilarBooks({
-    required String category,
-    int index = 0,
-  }) async {
-    try {
-      var data = await api.get(
-        endPoint:
-            'volumes?Filtering=free&Sorting=relevance&q=subject:$category&startIndex=${index * 10}',
       );
       List<BookModel> books = [];
       for (var item in data['items']) {
