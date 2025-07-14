@@ -2,7 +2,7 @@ import 'package:bookly_app/core/utilities/styles.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/buy_button.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/book_image_item.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/book_images_item.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsSection extends StatelessWidget {
@@ -17,7 +17,7 @@ class BookDetailsSection extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             horizontal: MediaQuery.of(context).size.width * .2,
           ),
-          child: BookImageItem(bookModel: bookModel),
+          child: BookImagesItem(bookModel: bookModel),
         ),
         SizedBox(height: 40),
         Text(

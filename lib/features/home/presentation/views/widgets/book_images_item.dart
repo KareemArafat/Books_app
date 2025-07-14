@@ -3,8 +3,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class BookImageItem extends StatelessWidget {
-  const BookImageItem({super.key, required this.bookModel});
+class BookImagesItem extends StatelessWidget {
+  const BookImagesItem({super.key, required this.bookModel});
 
   final BookModel bookModel;
 

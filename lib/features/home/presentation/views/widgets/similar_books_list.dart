@@ -1,5 +1,6 @@
 import 'package:bookly_app/features/home/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/book_image_item.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/book_images_item.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/similar_books_loading_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -57,14 +58,14 @@ class _SimilarBooksListState extends State<SimilarBooksList> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: BookImageItem(bookModel: state.books[index]),
+                  child: BookImagesItem(bookModel: state.books[index]),
                 );
               },
             );
           } else if (state is SimilarBooksFailure) {
             return Center(child: Text(state.errMess));
           } else {
-            return Center(child: CircularProgressIndicator());
+            return SimilarBooksLoadingList();
           }
         },
       ),
