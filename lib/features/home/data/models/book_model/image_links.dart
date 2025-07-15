@@ -1,5 +1,12 @@
-class ImageLinks {
+import 'package:hive/hive.dart';
+
+part 'image_links.g.dart';
+
+@HiveType(typeId: 2)
+class ImageLinks extends HiveObject {
+  @HiveField(0)
   String? smallThumbnail;
+  @HiveField(1)
   String? thumbnail;
 
   ImageLinks({this.smallThumbnail, this.thumbnail});

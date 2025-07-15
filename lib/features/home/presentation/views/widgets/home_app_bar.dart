@@ -9,7 +9,7 @@ class HomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 30),
+      padding: const EdgeInsets.only(bottom: 30),
       child: Row(
         children: [
           Image.asset(Assets.logo, height: 30),
@@ -19,6 +19,12 @@ class HomeAppBar extends StatelessWidget {
               GoRouter.of(context).push('/searchScreen');
             },
             icon: Icon(FontAwesomeIcons.magnifyingGlass),
+          ),
+          IconButton(
+            onPressed: () {
+              GoRouter.of(context).push('/favScreen');
+            },
+            icon: Icon(Icons.favorite, size: 30),
           ),
         ],
       ),

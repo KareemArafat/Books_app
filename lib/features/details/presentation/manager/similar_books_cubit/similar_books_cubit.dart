@@ -14,10 +14,11 @@ class SimilarBooksCubit extends Cubit<SimilarBooksState> {
       category: category,
       index: index,
     );
-
-    result.fold(
-      (l) => emit(SimilarBooksFailure(errMess: l.errMessage)),
-      (r) => emit(SimilarBooksSuccess(books: r)),
-    );
+    if (!isClosed) {
+      result.fold(
+        (l) => emit(SimilarBooksFailure(errMess: l.errMessage)),
+        (r) => emit(SimilarBooksSuccess(books: r)),
+      );
+    }
   }
 }

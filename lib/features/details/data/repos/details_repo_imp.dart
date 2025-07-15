@@ -1,11 +1,9 @@
-import 'package:bookly_app/const.dart';
 import 'package:bookly_app/core/errors/failures.dart';
 import 'package:bookly_app/core/utilities/api.dart';
 import 'package:bookly_app/features/details/data/repos/details_repo.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:hive/hive.dart';
 
 class DetailsRepoImp implements DetailsRepo {
   final Api api;
@@ -34,12 +32,5 @@ class DetailsRepoImp implements DetailsRepo {
     }
   }
 
-  @override
-  void addFavBook({required BookModel book}) async {
-    if (!book.fav) {
-      book.fav = true;
-      var note = Hive.box<BookModel>(kFavBooks);
-      await note.add(book);
-    }
-  }
+
 }

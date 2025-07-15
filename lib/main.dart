@@ -3,6 +3,8 @@ import 'package:bookly_app/core/utilities/app_router.dart';
 import 'package:bookly_app/core/utilities/cubit_observer.dart';
 import 'package:bookly_app/core/utilities/get_it.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly_app/features/home/data/models/book_model/image_links.dart';
+import 'package:bookly_app/features/home/data/models/book_model/volume_info.dart';
 import 'package:bookly_app/features/home/data/repos/home_implement.dart';
 import 'package:bookly_app/features/home/presentation/manager/all_books_cubit/all_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/manager/newest_books_cubit/newest_books_cubit.dart';
@@ -17,6 +19,8 @@ void main() async {
   Bloc.observer = CubitObserver();
   await Hive.initFlutter();
   Hive.registerAdapter(BookModelAdapter());
+  Hive.registerAdapter(VolumeInfoAdapter());
+  Hive.registerAdapter(ImageLinksAdapter());
   await Hive.openBox<BookModel>(kFavBooks);
 }
 

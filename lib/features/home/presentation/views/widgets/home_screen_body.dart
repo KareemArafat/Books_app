@@ -48,25 +48,27 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
-      child: CustomScrollView(
-        controller: _scrollController,
-        slivers: [
-          SliverToBoxAdapter(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                HomeAppBar(),
-                BookImagesList(),
-                SizedBox(height: 40),
-                Text('Newest Books', style: Styles.textStyle18),
-                SizedBox(height: 40),
-              ],
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        child: CustomScrollView(
+          controller: _scrollController,
+          slivers: [
+            SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  HomeAppBar(),
+                  BookImagesList(),
+                  SizedBox(height: 40),
+                  Text('Newest Books', style: Styles.textStyle18),
+                  SizedBox(height: 40),
+                ],
+              ),
             ),
-          ),
-          NewestBooksList(),
-        ],
+            NewestBooksList(),
+          ],
+        ),
       ),
     );
   }

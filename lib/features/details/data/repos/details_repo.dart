@@ -8,5 +8,5 @@ abstract class DetailsRepo {
     int index = 0,
   });
 
-  void addFavBook({required BookModel book});
+  
 }

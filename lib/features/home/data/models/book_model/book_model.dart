@@ -10,14 +10,11 @@ class BookModel extends HiveObject {
   String? id;
   @HiveField(2)
   VolumeInfo? volumeInfo;
-  @HiveField(3)
-  bool fav;
 
   BookModel({
     this.kind,
     this.id,
     this.volumeInfo,
-    this.fav = false,
   });
 
   factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(

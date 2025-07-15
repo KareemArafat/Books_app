@@ -1,19 +1,35 @@
+import 'package:hive/hive.dart';
 import 'image_links.dart';
 
-class VolumeInfo {
+part 'volume_info.g.dart';
+
+@HiveType(typeId: 1)
+class VolumeInfo extends HiveObject {
+  @HiveField(0)
   String? title;
+  @HiveField(1)
   List<String>? authors;
+  @HiveField(2)
   String? publisher;
+  @HiveField(3)
   String? publishedDate;
+  @HiveField(4)
   String? description;
+  @HiveField(5)
   int? pageCount;
+  @HiveField(6)
   List<String>? categories;
+  @HiveField(7)
   num? averageRating;
+  @HiveField(8)
   num? ratingsCount;
-  String? contentVersion;
+  @HiveField(9)
   ImageLinks? imageLinks;
+  @HiveField(10)
   String? language;
+  @HiveField(11)
   String? previewLink;
+  @HiveField(12)
   String? infoLink;
 
   VolumeInfo({
@@ -26,7 +42,6 @@ class VolumeInfo {
     this.categories,
     this.averageRating,
     this.ratingsCount,
-    this.contentVersion,
     this.imageLinks,
     this.language,
     this.previewLink,
@@ -43,7 +58,6 @@ class VolumeInfo {
     categories: (json['categories'] as List<dynamic>?)?.cast<String>(),
     averageRating: json['averageRating'] as num?,
     ratingsCount: json['ratingsCount'] as num?,
-    contentVersion: json['contentVersion'] as String?,
     imageLinks:
         json['imageLinks'] == null
             ? null
@@ -63,7 +77,6 @@ class VolumeInfo {
     'categories': categories,
     'averageRating': averageRating,
     'ratingsCount': ratingsCount,
-    'contentVersion': contentVersion,
     'imageLinks': imageLinks?.toJson(),
     'language': language,
     'previewLink': previewLink,
