@@ -8,8 +8,8 @@ import 'package:bookly_app/features/home/data/models/book_model/book_model.dart'
 import 'package:bookly_app/features/details/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookly_app/features/details/presentation/views/book_details_screen.dart';
 import 'package:bookly_app/features/home/presentation/views/home_screen.dart';
-import 'package:bookly_app/features/search/manger/cubit/search_cubit.dart';
-import 'package:bookly_app/features/search/presentation/data/repos/search_implement.dart';
+import 'package:bookly_app/features/search/presentation/manger/cubit/search_cubit.dart';
+import 'package:bookly_app/features/search/data/repos/search_implement.dart';
 import 'package:bookly_app/features/search/presentation/views/search_screen.dart';
 import 'package:bookly_app/features/splash/presentation/views/splash_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

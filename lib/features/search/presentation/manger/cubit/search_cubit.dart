@@ -1,5 +1,5 @@
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
-import 'package:bookly_app/features/search/presentation/data/repos/search_repo.dart';
+import 'package:bookly_app/features/search/data/repos/search_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'search_state.dart';
 

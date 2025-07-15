@@ -5,13 +5,13 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 class FavRepoImp implements FavRepo {
   @override
-  void addFavBook({required BookModel book}) async {
+  Future<void> addFavBook({required BookModel book}) async {
     var box = Hive.box<BookModel>(kFavBooks);
     await box.put(book.id, book);
   }
 
   @override
-  void delFavBook({required BookModel book}) async {
+  Future<void> delFavBook({required BookModel book}) async {
     var box = await Hive.openBox<BookModel>(kFavBooks);
     await box.delete(book.id);
   }
