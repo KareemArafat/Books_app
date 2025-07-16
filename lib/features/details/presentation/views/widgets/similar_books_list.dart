@@ -1,4 +1,5 @@
 import 'package:bookly_app/features/details/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_images_item.dart';
 import 'package:bookly_app/features/details/presentation/views/widgets/similar_books_loading_list.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class _SimilarBooksListState extends State<SimilarBooksList> {
   late ScrollController _scrollController;
   var index = 1;
   bool isLoading = false;
+  final List<BookModel> booksList = [];
 
   @override
   void initState() {
@@ -48,17 +50,24 @@ class _SimilarBooksListState extends State<SimilarBooksList> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * .15,
-      child: BlocBuilder<SimilarBooksCubit, SimilarBooksState>(
-        builder: (context, state) {
+      child: BlocConsumer<SimilarBooksCubit, SimilarBooksState>(
+        listener: (context, state) {
           if (state is SimilarBooksSuccess) {
+            booksList.addAll(state.books);
+          }
+        },
+        builder: (context, state) {
+          if (state is SimilarBooksSuccess ||
+              state is SimilarBooksPaginationLoading ||
+              state is SimilarBooksPaginationFailure) {
             return ListView.builder(
               controller: _scrollController,
               scrollDirection: Axis.horizontal,
-              itemCount: state.books.length,
+              itemCount: booksList.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: BookImagesItem(bookModel: state.books[index]),
+                  child: BookImagesItem(bookModel: booksList[index]),
                 );
               },
             );

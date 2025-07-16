@@ -1,3 +1,4 @@
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/manager/all_books_cubit/all_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_images_item.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_images_loading_list.dart';
@@ -15,6 +16,7 @@ class _BookImagesListState extends State<BookImagesList> {
   late ScrollController _scrollController;
   var index = 1;
   bool isLoading = false;
+  List<BookModel> booksList = [];
 
   @override
   void initState() {
@@ -47,21 +49,28 @@ class _BookImagesListState extends State<BookImagesList> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * .25,
-      child: BlocBuilder<AllBooksCubit, AllBooksState>(
+      child: BlocConsumer<AllBooksCubit, AllBooksState>(
+        listener: (context, state) {
+          if (state is AllBooksSuccess) {
+            booksList.addAll(state.books);
+          }
+        },
         builder: (context, state) {
-          if (state is AllBooksCubitSuccess) {
+          if (state is AllBooksSuccess ||
+              state is AllBooksPaginationLoading ||
+              state is AllBooksPaginationFailure) {
             return ListView.builder(
               controller: _scrollController,
-              itemCount: state.books.length,
+              itemCount: booksList.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: BookImagesItem(bookModel: state.books[index]),
+                  child: BookImagesItem(bookModel: booksList[index]),
                 );
               },
             );
-          } else if (state is AllBooksCubitFailure) {
+          } else if (state is AllBooksFailure) {
             return Center(child: Text(state.errMess));
           } else {
             return BookImagesLoadingList();

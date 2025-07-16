@@ -8,6 +8,7 @@ class SimilarBooksLoadingList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Skeletonizer(
+      ignorePointers: false,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 10,

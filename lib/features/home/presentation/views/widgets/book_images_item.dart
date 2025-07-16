@@ -19,11 +19,13 @@ class BookImagesItem extends StatelessWidget {
         child: AspectRatio(
           aspectRatio: 3 / 5,
           child: CachedNetworkImage(
-            imageUrl: bookModel.volumeInfo!.imageLinks?.thumbnail ?? '',
+            imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail ?? '',
             fit: BoxFit.fill,
             errorWidget:
-                (context, url, error) =>
-                    const Icon(Icons.error_outline_rounded),
+                (context, url, error) => Container(
+                  color: Colors.grey,
+                  child: Icon(Icons.image_not_supported_outlined),
+                ),
           ),
         ),
       ),

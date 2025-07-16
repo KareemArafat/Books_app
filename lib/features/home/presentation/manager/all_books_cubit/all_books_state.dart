@@ -3,16 +3,25 @@ part of 'all_books_cubit.dart';
 @immutable
 sealed class AllBooksState {}
 
-final class AllBooksCubitInitial extends AllBooksState {}
+final class AllBooksInitial extends AllBooksState {}
 
-final class AllBooksCubitLoading extends AllBooksState {}
+final class AllBooksLoading extends AllBooksState {}
 
-final class AllBooksCubitFailure extends AllBooksState {
+final class AllBooksFailure extends AllBooksState {
   final String errMess;
-  AllBooksCubitFailure({required this.errMess});
+  AllBooksFailure({required this.errMess});
 }
 
-final class AllBooksCubitSuccess extends AllBooksState {
+final class AllBooksSuccess extends AllBooksState {
   final List<BookModel> books;
-  AllBooksCubitSuccess({required this.books});
+  AllBooksSuccess({required this.books});
 }
+
+final class AllBooksPaginationLoading extends AllBooksState {}
+
+
+final class AllBooksPaginationFailure extends AllBooksState {
+  final String errMess;
+  AllBooksPaginationFailure({required this.errMess});
+}
+

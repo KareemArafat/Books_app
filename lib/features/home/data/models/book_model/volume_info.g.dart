@@ -17,7 +17,7 @@ class VolumeInfoAdapter extends TypeAdapter<VolumeInfo> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return VolumeInfo(
-      title: fields[0] as String?,
+      title: fields[0] as String,
       authors: (fields[1] as List?)?.cast<String>(),
       publisher: fields[2] as String?,
       publishedDate: fields[3] as String?,

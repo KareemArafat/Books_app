@@ -28,7 +28,7 @@ class NewestBookItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      bookModel.volumeInfo!.title!,
+                      bookModel.volumeInfo.title,
                       style: Styles.textStyle20.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -37,7 +37,7 @@ class NewestBookItem extends StatelessWidget {
                     ),
                     SizedBox(height: 3),
                     Text(
-                      bookModel.volumeInfo!.authors?[0] ?? 'Un Known',
+                      bookModel.volumeInfo.authors?[0] ?? 'Un Known',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Styles.textStyle16,
@@ -48,8 +48,8 @@ class NewestBookItem extends StatelessWidget {
                         Text('Free', style: Styles.textStyle18),
                         Spacer(),
                         BookRating(
-                          rating: bookModel.volumeInfo!.averageRating ?? 00,
-                          count: bookModel.volumeInfo!.ratingsCount ?? 00,
+                          rating: bookModel.volumeInfo.averageRating ?? 00,
+                          count: bookModel.volumeInfo.ratingsCount ?? 00,
                         ),
                       ],
                     ),

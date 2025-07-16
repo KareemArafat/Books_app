@@ -7,28 +7,21 @@ class BookModel extends HiveObject {
   @HiveField(0)
   String? kind;
   @HiveField(1)
-  String? id;
+  String id;
   @HiveField(2)
-  VolumeInfo? volumeInfo;
+  VolumeInfo volumeInfo;
 
-  BookModel({
-    this.kind,
-    this.id,
-    this.volumeInfo,
-  });
+  BookModel({this.kind, required this.id, required this.volumeInfo});
 
   factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
     kind: json['kind'] as String?,
-    id: json['id'] as String?,
-    volumeInfo:
-        json['volumeInfo'] == null
-            ? null
-            : VolumeInfo.fromJson(json['volumeInfo'] as Map<String, dynamic>),
+    volumeInfo: VolumeInfo.fromJson(json['volumeInfo'] as Map<String, dynamic>),
+    id: json['id'] as String,
   );
 
   Map<String, dynamic> toJson() => {
     'kind': kind,
     'id': id,
-    'volumeInfo': volumeInfo?.toJson(),
+    'volumeInfo': volumeInfo.toJson(),
   };
 }

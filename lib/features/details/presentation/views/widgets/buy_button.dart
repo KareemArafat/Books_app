@@ -13,8 +13,9 @@ class BuyButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CustomButton(
+          tap: () => openUrl(bookUrl: bookModel.volumeInfo.infoLink!),
           backGroundColor: Colors.white,
-          text: 'Free',
+          text: 'DownLoad',
           textColor: Colors.black,
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(15),
@@ -22,10 +23,9 @@ class BuyButton extends StatelessWidget {
           ),
         ),
         CustomButton(
-          tap: () => openUrl(bookUrl: bookModel.volumeInfo!.previewLink!),
+          tap: () => openUrl(bookUrl: bookModel.volumeInfo.previewLink!),
           backGroundColor: Colors.orangeAccent,
-          text: 'Free preview',
-          size: 14,
+          text: 'Free Preview',
           textColor: Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(15),

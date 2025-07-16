@@ -6,7 +6,7 @@ part 'volume_info.g.dart';
 @HiveType(typeId: 1)
 class VolumeInfo extends HiveObject {
   @HiveField(0)
-  String? title;
+  String title;
   @HiveField(1)
   List<String>? authors;
   @HiveField(2)
@@ -33,7 +33,7 @@ class VolumeInfo extends HiveObject {
   String? infoLink;
 
   VolumeInfo({
-    this.title,
+    required this.title,
     this.authors,
     this.publisher,
     this.publishedDate,
@@ -49,7 +49,7 @@ class VolumeInfo extends HiveObject {
   });
 
   factory VolumeInfo.fromJson(Map<String, dynamic> json) => VolumeInfo(
-    title: json['title'] as String?,
+    title: json['title'] as String,
     authors: (json['authors'] as List<dynamic>?)?.cast<String>(),
     publisher: json['publisher'] as String?,
     publishedDate: json['publishedDate'] as String?,

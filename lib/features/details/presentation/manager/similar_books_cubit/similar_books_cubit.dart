@@ -8,7 +8,11 @@ class SimilarBooksCubit extends Cubit<SimilarBooksState> {
   final DetailsRepo _detailsRepo;
 
   getSimilarBooks({required String category, int index = 0}) async {
-    emit(SimilarBooksLoading());
+    if (index > 0) {
+      emit(SimilarBooksPaginationLoading());
+    } else {
+      emit(SimilarBooksLoading());
+    }
 
     var result = await _detailsRepo.getSimilarBooks(
       category: category,
@@ -16,7 +20,10 @@ class SimilarBooksCubit extends Cubit<SimilarBooksState> {
     );
     if (!isClosed) {
       result.fold(
-        (l) => emit(SimilarBooksFailure(errMess: l.errMessage)),
+        (l) =>
+            index > 0
+                ? emit(SimilarBooksPaginationFailure(errMess: l.errMessage))
+                : emit(SimilarBooksFailure(errMess: l.errMessage)),
         (r) => emit(SimilarBooksSuccess(books: r)),
       );
     }

@@ -25,7 +25,7 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
     super.initState();
   }
 
-  void paginationCheck() async {
+  Future<void> paginationCheck() async {
     var currentIndex = _scrollController.position.pixels;
     var maxIndex = _scrollController.position.maxScrollExtent;
     if (currentIndex >= 0.7 * maxIndex) {

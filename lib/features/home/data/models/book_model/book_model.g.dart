@@ -18,8 +18,8 @@ class BookModelAdapter extends TypeAdapter<BookModel> {
     };
     return BookModel(
       kind: fields[0] as String?,
-      id: fields[1] as String?,
-      volumeInfo: fields[2] as VolumeInfo?,
+      id: fields[1] as String,
+      volumeInfo: fields[2] as VolumeInfo,
     );
   }
 

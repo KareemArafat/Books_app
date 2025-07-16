@@ -16,3 +16,10 @@ final class NewestBooksSuccess extends NewestBooksState {
   final List<BookModel> books;
   NewestBooksSuccess({required this.books});
 }
+
+final class NewestBooksPaginationLoading extends NewestBooksState {}
+
+final class NewestBooksPaginationFailure extends NewestBooksState {
+  final String errMess;
+  NewestBooksPaginationFailure({required this.errMess});
+}

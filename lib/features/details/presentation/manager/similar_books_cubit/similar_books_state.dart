@@ -15,3 +15,10 @@ final class SimilarBooksSuccess extends SimilarBooksState {
   final List<BookModel> books;
   SimilarBooksSuccess({required this.books});
 }
+
+final class SimilarBooksPaginationLoading extends SimilarBooksState {}
+
+final class SimilarBooksPaginationFailure extends SimilarBooksState {
+  final String errMess;
+  SimilarBooksPaginationFailure({required this.errMess});
+}
