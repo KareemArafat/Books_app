@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/utilities/app_router.dart';
 import 'package:bookly_app/core/utilities/styles.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.dart';
@@ -12,16 +13,17 @@ class NewestBookItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap:
-          () =>
-              GoRouter.of(context).push('/bookDetailsScreen', extra: bookModel),
+          () => GoRouter.of(
+            context,
+          ).push(AppRouter.kBookDetailsScreen, extra: bookModel),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
         child: SizedBox(
           height: 125,
           child: Row(
             children: [
               BookImagesItem(bookModel: bookModel),
-              SizedBox(width: 30),
+              SizedBox(width: 20),
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

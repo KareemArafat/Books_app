@@ -65,7 +65,7 @@ class _BookImagesListState extends State<BookImagesList> {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 6),
                   child: BookImagesItem(bookModel: booksList[index]),
                 );
               },

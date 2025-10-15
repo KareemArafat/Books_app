@@ -22,7 +22,7 @@ class _SearchFieldState extends State<SearchField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 15, right: 30),
+      padding: const EdgeInsets.only(left: 10, right: 12),
       child: TextField(
         onChanged: (value) {
           name.text = value;
@@ -41,7 +41,7 @@ class _SearchFieldState extends State<SearchField> {
             },
             icon: Icon(FontAwesomeIcons.magnifyingGlass),
           ),
-          hintText: 'Search',
+          hintText: 'Enter Book Name',
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
             borderSide: BorderSide(color: Colors.white),

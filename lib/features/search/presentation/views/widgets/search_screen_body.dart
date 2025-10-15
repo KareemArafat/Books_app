@@ -8,20 +8,18 @@ class SearchScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SearchScreenAppBar(),
-          SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Text('Search Results', style: Styles.textStyle18),
-          ),
-          SizedBox(height: 10),
-          Expanded(child: SearchResultList()),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SearchScreenAppBar(),
+        SizedBox(height: 20),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: Text('Search Results', style: Styles.textStyle18),
+        ),
+        SizedBox(height: 10),
+        Expanded(child: SearchResultList()),
+      ],
     );
   }
 }

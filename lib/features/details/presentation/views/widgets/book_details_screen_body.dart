@@ -10,28 +10,23 @@ class BookDetailsScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: CustomScrollView(
-        slivers: [
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Column(
-                children: [
-                  BookDetailsAppBar(bookModel: bookModel),
-                  SizedBox(height: 20),
-                  BookDetailsSection(bookModel: bookModel),
-                  SizedBox(height: 40),
-                  SimilarBooksSection(
-                    category: bookModel.volumeInfo.categories?[0] ?? '',
-                  ),
-                ],
+    return CustomScrollView(
+      slivers: [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Column(
+            children: [
+              BookDetailsAppBar(bookModel: bookModel),
+              SizedBox(height: 20),
+              BookDetailsSection(bookModel: bookModel),
+              SizedBox(height: 40),
+              SimilarBooksSection(
+                category: bookModel.volumeInfo.categories?[0] ?? '',
               ),
-            ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

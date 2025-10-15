@@ -66,7 +66,7 @@ class _SimilarBooksListState extends State<SimilarBooksList> {
               itemCount: booksList.length,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
                   child: BookImagesItem(bookModel: booksList[index]),
                 );
               },

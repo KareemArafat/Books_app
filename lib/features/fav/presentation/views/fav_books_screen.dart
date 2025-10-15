@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/widgets/custom_gradient_scaffold.dart';
 import 'package:bookly_app/features/fav/presentation/views/widgets/fav_books_screen_body.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,6 @@ class FavBooksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: SafeArea(child: FavBooksScreenBody()));
+    return CustomGradientScaffold(body: SafeArea(child: FavBooksScreenBody()));
   }
 }

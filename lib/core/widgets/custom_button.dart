@@ -10,6 +10,7 @@ class CustomButton extends StatelessWidget {
     this.size,
     this.textColor,
     this.tap,
+    this.icon,
   });
 
   final Color backGroundColor;
@@ -18,6 +19,7 @@ class CustomButton extends StatelessWidget {
   final double? size;
   final Color? textColor;
   final void Function()? tap;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +33,18 @@ class CustomButton extends StatelessWidget {
             borderRadius: borderRadius ?? BorderRadius.circular(12),
           ),
         ),
-        child: Text(
-          text,
-          style: Styles.textStyle16.copyWith(
-            color: textColor,
-            fontWeight: FontWeight.w900,
-            fontSize: size,
-          ),
+        child: Row(
+          children: [
+            icon ?? SizedBox(),
+            Text(
+              text,
+              style: Styles.textStyle16.copyWith(
+                color: textColor,
+                fontWeight: FontWeight.w900,
+                fontSize: size,
+              ),
+            ),
+          ],
         ),
       ),
     );

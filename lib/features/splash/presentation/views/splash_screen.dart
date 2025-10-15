@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/widgets/custom_gradient_scaffold.dart';
 import 'package:bookly_app/features/splash/presentation/views/widgets/splash_screen_body.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,6 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: SplashScreenBody());
+    return CustomGradientScaffold(body: SplashScreenBody());
   }
 }

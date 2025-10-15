@@ -6,6 +6,8 @@ import 'package:bookly_app/features/home/presentation/views/widgets/book_images_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+bool initLoading = false;
+
 class HomeScreenBody extends StatefulWidget {
   const HomeScreenBody({super.key});
 
@@ -28,7 +30,7 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
   Future<void> paginationCheck() async {
     var currentIndex = _scrollController.position.pixels;
     var maxIndex = _scrollController.position.maxScrollExtent;
-    if (currentIndex >= 0.7 * maxIndex) {
+    if (currentIndex >= 0.7 * maxIndex && initLoading==true) {
       if (isLoading) return;
       if (!isLoading) {
         isLoading = true;
@@ -48,28 +50,26 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
-        child: CustomScrollView(
-          controller: _scrollController,
-          slivers: [
-            SliverToBoxAdapter(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  HomeAppBar(),
-                  BookImagesList(),
-                  SizedBox(height: 40),
-                  Text('Newest Books', style: Styles.textStyle18),
-                  SizedBox(height: 40),
-                ],
+    return CustomScrollView(
+      controller: _scrollController,
+      slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              HomeAppBar(),
+              BookImagesList(),
+              SizedBox(height: 40),
+              Padding(
+                padding: const EdgeInsets.only(left: 12),
+                child: Text('Newest Books', style: Styles.textStyle18),
               ),
-            ),
-            NewestBooksList(),
-          ],
+              SizedBox(height: 10),
+            ],
+          ),
         ),
-      ),
+        NewestBooksList(),
+      ],
     );
   }
 }

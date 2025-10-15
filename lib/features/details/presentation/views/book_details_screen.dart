@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/widgets/custom_gradient_scaffold.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/details/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookly_app/features/details/presentation/views/widgets/book_details_screen_body.dart';
@@ -23,6 +24,8 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: BookDetailsScreenBody(bookModel: widget.bookModel));
+    return CustomGradientScaffold(
+      body: SafeArea(child: BookDetailsScreenBody(bookModel: widget.bookModel)),
+    );
   }
 }

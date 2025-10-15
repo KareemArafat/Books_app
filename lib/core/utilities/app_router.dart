@@ -16,15 +16,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
+  static const kHomeScreen = '/homeScreen';
+  static const kBookDetailsScreen = '/bookDetailsScreen';
+  static const kSearchScreen = '/searchScreen';
+  static const kFavScreen = '/favScreen';
+
   static final router = GoRouter(
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SplashScreen()),
       GoRoute(
-        path: '/homeScreen',
+        path: kHomeScreen,
         builder: (context, state) => const HomeScreen(),
       ),
       GoRoute(
-        path: '/bookDetailsScreen',
+        path: kBookDetailsScreen,
         builder:
             (context, state) => MultiBlocProvider(
               providers: [
@@ -39,7 +44,7 @@ abstract class AppRouter {
             ),
       ),
       GoRoute(
-        path: '/searchScreen',
+        path: kSearchScreen,
         builder:
             (context, state) => BlocProvider(
               create: (context) => SearchCubit(getIt.get<SearchImplement>()),
@@ -47,7 +52,7 @@ abstract class AppRouter {
             ),
       ),
       GoRoute(
-        path: '/favScreen',
+        path: kFavScreen,
         builder:
             (context, state) => BlocProvider(
               create:

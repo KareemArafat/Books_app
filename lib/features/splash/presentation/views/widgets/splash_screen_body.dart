@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/utilities/app_router.dart';
 import 'package:bookly_app/core/utilities/assets.dart';
 import 'package:bookly_app/features/splash/presentation/views/widgets/text_animation.dart';
 import 'package:flutter/material.dart';
@@ -22,13 +23,22 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
     goToHome();
   }
 
+  void goToHome() {
+    Future.delayed(
+      Duration(seconds: 3),
+      () => GoRouter.of(context).pushReplacement(AppRouter.kHomeScreen),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Image.asset(Assets.logo),
+        Image.asset(Assets.appIcon, fit: BoxFit.fitHeight, height: 100),
+        Image.asset(Assets.logo, fit: BoxFit.fitHeight, height: 20),
+        SizedBox(height: 20),
         TextAnimation(textAnimation: textAnimation),
       ],
     );
@@ -44,12 +54,5 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
       end: Offset.zero,
     ).animate(animationController);
     animationController.forward();
-  }
-
-  void goToHome() {
-    Future.delayed(
-      Duration(seconds: 2),
-      () => GoRouter.of(context).pushReplacement('/homeScreen'),
-    );
   }
 }

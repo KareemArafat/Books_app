@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/utilities/assets.dart';
 import 'package:bookly_app/core/utilities/functions.dart';
 import 'package:bookly_app/core/widgets/custom_button.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
@@ -15,7 +16,8 @@ class BuyButton extends StatelessWidget {
         CustomButton(
           tap: () => openUrl(bookUrl: bookModel.volumeInfo.infoLink!),
           backGroundColor: Colors.white,
-          text: 'DownLoad',
+          icon: Image.asset(Assets.googlePlayIcon, height: 20),
+          text: ' DownLoad',
           textColor: Colors.black,
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(15),
@@ -24,7 +26,7 @@ class BuyButton extends StatelessWidget {
         ),
         CustomButton(
           tap: () => openUrl(bookUrl: bookModel.volumeInfo.previewLink!),
-          backGroundColor: Colors.orangeAccent,
+          backGroundColor: Colors.green,
           text: 'Free Preview',
           textColor: Colors.white,
           borderRadius: BorderRadius.only(

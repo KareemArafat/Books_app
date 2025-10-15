@@ -11,22 +11,16 @@ class SearchResultList extends StatelessWidget {
     return BlocBuilder<SearchCubit, SearchState>(
       builder: (context, state) {
         if (state is SearchSuccess) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: ListView.builder(
-              itemCount: state.books.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5),
-                  child: NewestBookItem(bookModel: state.books[index]),
-                );
-              },
-            ),
+          return ListView.builder(
+            itemCount: state.books.length,
+            itemBuilder: (context, index) {
+              return NewestBookItem(bookModel: state.books[index]);
+            },
           );
         } else if (state is SearchInitial) {
-          return Center(child: Text('No Results'));
+          return Center(child: Text('Search Now 🔍'));
         } else if (state is SearchFailure) {
-          return Center(child: Text(state.errMess));
+          return Center(child: Text('No Results Found 😔'));
         } else {
           return Center(child: CircularProgressIndicator());
         }

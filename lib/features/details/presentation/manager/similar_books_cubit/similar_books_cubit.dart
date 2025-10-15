@@ -7,7 +7,10 @@ class SimilarBooksCubit extends Cubit<SimilarBooksState> {
   SimilarBooksCubit(this._detailsRepo) : super(SimilarBooksInitial());
   final DetailsRepo _detailsRepo;
 
-  getSimilarBooks({required String category, int index = 0}) async {
+  Future<void> getSimilarBooks({
+    required String category,
+    int index = 0,
+  }) async {
     if (index > 0) {
       emit(SimilarBooksPaginationLoading());
     } else {

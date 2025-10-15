@@ -1,4 +1,3 @@
-import 'package:bookly_app/const.dart';
 import 'package:bookly_app/core/utilities/app_router.dart';
 import 'package:bookly_app/core/utilities/cubit_observer.dart';
 import 'package:bookly_app/core/utilities/functions.dart';
@@ -40,10 +39,10 @@ class BooklyApp extends StatelessWidget {
         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(
-          scaffoldBackgroundColor: kPrimaryColor,
           textTheme: GoogleFonts.montserratTextTheme(
-            ThemeData.dark().textTheme,
+            ThemeData.dark().textTheme.apply(bodyColor: Colors.white),
           ),
+          colorScheme: const ColorScheme.dark(),
         ),
       ),
     );

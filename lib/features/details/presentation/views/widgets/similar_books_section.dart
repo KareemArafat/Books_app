@@ -12,9 +12,13 @@ class SimilarBooksSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('More similar books', style: Styles.textStyle16),
+        Padding(
+          padding: const EdgeInsets.only(left: 12),
+          child: Text('More similar Books', style: Styles.textStyle16),
+        ),
         SizedBox(height: 15),
         SimilarBooksList(category: category),
+        SizedBox(height: 15),
       ],
     );
   }

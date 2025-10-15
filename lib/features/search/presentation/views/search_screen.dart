@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/widgets/custom_gradient_scaffold.dart';
 import 'package:bookly_app/features/search/presentation/views/widgets/search_screen_body.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +7,6 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SearchScreenBody());
+    return CustomGradientScaffold(body: SafeArea(child: SearchScreenBody()));
   }
 }

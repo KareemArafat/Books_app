@@ -10,12 +10,8 @@ class FavBooksScreenBody extends StatelessWidget {
     return Column(
       children: [
         FavBooksAppBar(),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: FavBooksList(),
-          ),
-        ),
+        SizedBox(height: 20),
+        Expanded(child: FavBooksList()),
       ],
     );
   }

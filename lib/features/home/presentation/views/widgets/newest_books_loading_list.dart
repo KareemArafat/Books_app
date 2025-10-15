@@ -1,3 +1,4 @@
+import 'package:bookly_app/const.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_images_loading_list.dart';
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -9,20 +10,27 @@ class NewestBooksLoadingList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildBuilderDelegate((context, index) {
-        return Skeletonizer(child: dummyBookItem());
-      }, childCount: 6),
+        return Skeletonizer(
+          effect: const ShimmerEffect(
+            baseColor: kLoading,
+            highlightColor: Colors.grey,
+          ),
+          ignorePointers: false,
+          child: dummyBookItem(),
+        );
+      }, childCount: 5),
     );
   }
 }
 
 Widget dummyBookItem() {
   return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 10),
+    padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
     child: SizedBox(
       height: 125,
       child: Row(
         children: [
-          dummyBookImageItem(),
+          dummyBookImage(),
           SizedBox(width: 30),
           Expanded(
             child: Column(

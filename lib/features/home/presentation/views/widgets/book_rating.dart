@@ -12,7 +12,7 @@ class BookRating extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Icon(Icons.star_rate_rounded, color: Colors.yellow),
-        SizedBox(width: 6),
+        SizedBox(width: 5),
         Text('$rating', style: Styles.textStyle16),
         SizedBox(width: 5),
         Text(

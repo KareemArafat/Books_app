@@ -11,34 +11,37 @@ class BookDetailsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * .2,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width * .22,
+            ),
+            child: BookImagesItem(bookModel: bookModel, clickable: false),
           ),
-          child: BookImagesItem(bookModel: bookModel),
-        ),
-        SizedBox(height: 40),
-        Text(
-          bookModel.volumeInfo.title,
-          style: Styles.textStyle30,
-          textAlign: TextAlign.center,
-        ),
-        SizedBox(height: 6),
-        Text(
-          bookModel.volumeInfo.authors?[0] ?? 'Un Known',
-          style: Styles.textStyle20,
-          textAlign: TextAlign.center,
-        ),
-        SizedBox(height: 6),
-        BookRating(
-          rating: bookModel.volumeInfo.averageRating ?? 00,
-          count: bookModel.volumeInfo.ratingsCount ?? 00,
-        ),
-        SizedBox(height: 20),
-        BuyButton(bookModel: bookModel),
-      ],
+          SizedBox(height: 30),
+          Text(
+            bookModel.volumeInfo.title,
+            style: Styles.textStyle30,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: 8),
+          Text(
+            bookModel.volumeInfo.authors?[0] ?? 'Un Known',
+            style: Styles.textStyle20,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: 8),
+          BookRating(
+            rating: bookModel.volumeInfo.averageRating ?? 00,
+            count: bookModel.volumeInfo.ratingsCount ?? 00,
+          ),
+          SizedBox(height: 20),
+          BuyButton(bookModel: bookModel),
+        ],
+      ),
     );
   }
 }

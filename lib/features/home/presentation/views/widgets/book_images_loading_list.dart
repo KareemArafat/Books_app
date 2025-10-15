@@ -1,3 +1,4 @@
+import 'package:bookly_app/const.dart';
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -7,14 +8,18 @@ class BookImagesLoadingList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Skeletonizer(
+      effect: const ShimmerEffect(
+        baseColor: kLoading,
+        highlightColor: Colors.grey,
+      ),
       ignorePointers: false,
       child: ListView.builder(
-        itemCount: 10,
+        itemCount: 5,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: dummyBookImageItem(),
+            padding: const EdgeInsets.symmetric(horizontal: 6),
+            child: dummyBookImage(),
           );
         },
       ),
@@ -22,7 +27,7 @@ class BookImagesLoadingList extends StatelessWidget {
   }
 }
 
-Widget dummyBookImageItem() {
+Widget dummyBookImage() {
   return Skeleton.leaf(
     child: ClipRRect(
       borderRadius: BorderRadius.circular(15),

@@ -12,7 +12,7 @@ class TextAnimation extends StatelessWidget {
       builder: (context, child) {
         return SlideTransition(
           position: textAnimation,
-          child: Text('Read Free Books', textAlign: TextAlign.center),
+          child: Text('Read Your Favorite Books', textAlign: TextAlign.center),
         );
       },
     );
