@@ -1,3 +1,4 @@
+import 'package:bookly_app/const.dart';
 import 'package:bookly_app/core/utilities/styles.dart';
 import 'package:bookly_app/features/home/presentation/manager/newest_books_cubit/newest_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/newest_books_list.dart';
@@ -5,8 +6,6 @@ import 'package:bookly_app/features/home/presentation/views/widgets/home_app_bar
 import 'package:bookly_app/features/home/presentation/views/widgets/book_images_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-bool initLoading = false;
 
 class HomeScreenBody extends StatefulWidget {
   const HomeScreenBody({super.key});
@@ -30,7 +29,7 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
   Future<void> paginationCheck() async {
     var currentIndex = _scrollController.position.pixels;
     var maxIndex = _scrollController.position.maxScrollExtent;
-    if (currentIndex >= 0.7 * maxIndex && initLoading==true) {
+    if (currentIndex >= 0.7 * maxIndex && initLoading == false) {
       if (isLoading) return;
       if (!isLoading) {
         isLoading = true;

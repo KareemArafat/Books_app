@@ -3,9 +3,20 @@ import 'package:bookly_app/features/home/presentation/views/widgets/book_images_
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class NewestBooksLoadingList extends StatelessWidget {
+class NewestBooksLoadingList extends StatefulWidget {
   const NewestBooksLoadingList({super.key});
 
+  @override
+  State<NewestBooksLoadingList> createState() => _NewestBooksLoadingListState();
+}
+
+class _NewestBooksLoadingListState extends State<NewestBooksLoadingList> {
+
+  @override
+  void dispose() {
+   initLoading = false;
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return SliverList(

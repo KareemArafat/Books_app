@@ -18,7 +18,7 @@ class BookImagesLoadingList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 3),
             child: dummyBookImage(),
           );
         },
